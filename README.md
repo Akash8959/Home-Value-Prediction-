@@ -140,6 +140,3 @@ This project is built for educational and portfolio purposes. The prediction acc
 ## 👨‍💻 Author
 
 **Akash H G**
-
-```
-
