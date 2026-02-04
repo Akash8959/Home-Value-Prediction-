@@ -1,0 +1,137 @@
+/* General Body */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Headings */
+h2, h3, h4, h5 {
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Forms */
+.form-label {
+    font-weight: 500;
+}
+
+input, select {
+    border-radius: 0.375rem;
+}
+
+/* Cards */
+.card {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Tables */
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.table tbody tr:hover {
+    background-color: #e9f5ff;
+}
+
+/* Pagination */
+.pagination .page-link {
+    border-radius: 0.375rem;
+}
+
+.pagination .active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+/* Charts */
+canvas {
+    max-width: 100% !important;
+}
+
+/* Flash messages */
+.flash {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+}
+
+/* Upload Input */
+.custom-file-input {
+    cursor: pointer;
+}
+
+/* Image previews */
+.img-preview {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Map container */
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.card, .table {
+    border-radius: 10px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+img {
+    max-height: 200px;
+    object-fit: cover;
+}
