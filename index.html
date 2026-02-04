@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Value Prediction</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        #map { height: 400px; margin-bottom: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body class="p-4">
+
+<div class="container">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🏠 House Value Prediction</h2>
+        <div>
+            <span class="me-3">Hello, {{ session['username'] }}</span>
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm">Logout</a>
+        </div>
+    </div>
+
+    <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+        <!-- Map -->
+        <div id="map"></div>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="longitude" class="form-label">Longitude</label>
+                <input type="text" class="form-control" id="longitude" name="longitude" required>
+            </div>
+            <div class="col-md-3">
+                <label for="latitude" class="form-label">Latitude</label>
+                <input type="text" class="form-control" id="latitude" name="latitude" required>
+            </div>
+            <div class="col-md-2">
+                <label for="housing_median_age" class="form-label">Median Age</label>
+                <input type="number" class="form-control" name="housing_median_age" required>
+            </div>
+            <div class="col-md-2">
+                <label for="total_rooms" class="form-label">Total Rooms</label>
+                <input type="number" class="form-control" name="total_rooms" required>
+            </div>
+            <div class="col-md-2">
+                <label for="total_bedrooms" class="form-label">Total Bedrooms</label>
+                <input type="number" class="form-control" name="total_bedrooms" required>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <div class="col-md-2">
+                <label for="population" class="form-label">Population</label>
+                <input type="number" class="form-control" name="population" required>
+            </div>
+            <div class="col-md-2">
+                <label for="households" class="form-label">Households</label>
+                <input type="number" class="form-control" name="households" required>
+            </div>
+            <div class="col-md-2">
+                <label for="median_income" class="form-label">Median Income</label>
+                <input type="number" step="0.01" class="form-control" name="median_income" required>
+            </div>
+            <div class="col-md-2">
+                <label for="ocean_proximity" class="form-label">Ocean Proximity</label>
+                <select class="form-select" name="ocean_proximity" required>
+                    <option value="NEAR BAY">NEAR BAY</option>
+                    <option value="<1H OCEAN"><1H OCEAN</option>
+                    <option value="INLAND">INLAND</option>
+                    <option value="ISLAND">ISLAND</option>
+                    <option value="NEAR OCEAN">NEAR OCEAN</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Predict</button>
+    </form>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([37.7749, -122.4194], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+
+    var marker;
+    map.on('click', function(e) {
+        var lat = e.latlng.lat.toFixed(5);
+        var lng = e.latlng.lng.toFixed(5);
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+
+        if (marker) { map.removeLayer(marker); }
+        marker = L.marker([lat, lng]).addTo(map);
+    });
+</script>
+</body>
+</html>

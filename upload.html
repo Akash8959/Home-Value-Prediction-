@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Upload CSV{% endblock %}
+
+{% block content %}
+<h2>📤 CSV Batch Prediction</h2>
+<p>CSV must contain columns: <code>longitude,latitude,housing_median_age,total_rooms,total_bedrooms,population,households,median_income,ocean_proximity</code></p>
+
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <input type="file" name="csv_file" class="form-control" accept=".csv" required>
+  </div>
+  <button class="btn btn-primary">Upload & Predict</button>
+  <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
